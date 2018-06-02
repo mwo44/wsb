@@ -1,0 +1,13 @@
+<section>
+	<h2>Movies:</h2>
+	<ol *ngIf="movies; else loader">
+		<li *ngFor="let movie of movies">
+			{{movie.title}} ({{movie.release_year}})
+			<!-- <img [src]="movie.image"/> -->
+		</li>
+	</ol>
+</section>
+
+<ng-template #loader>
+  <div className="loader">loading...</div>
+</ng-template>

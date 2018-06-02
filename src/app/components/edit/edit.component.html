@@ -1,0 +1,29 @@
+<section>
+  <a routerLink="/">back</a>  
+
+  <form *ngIf="tempPerson; else loader" #editForm="ngForm" (ngSubmit)="edit(editForm.value)" novalidate>
+    <legend>Edit {{tempPerson.name}}</legend>
+    <input type="hidden" [(ngModel)]="tempPerson._id" name="_id" />
+    <input type="text" [(ngModel)]="tempPerson.name" name="name" required />
+    <input type="text" [(ngModel)]="tempPerson.image" name="image" required />
+    <img [src]="tempPerson.image" />
+    <fieldset *ngFor="let movie of movies; let i = index;">
+      <input  *ngIf="movie.title"              
+              [checked]="movie.checked"
+              [id]="movie._id"
+              name="films"
+              type="checkbox"              
+              [value]="movie.title"
+              (change)="updateFilms($event)"
+              />
+      <label [for]="movie._id">{{movie.title}} ({{movie.release_year}})</label>
+    </fieldset>
+    <input  type="submit"
+            value="submit changes"/>
+  </form>
+
+  <ng-template #loader>
+    <div className="loader">requesting data...</div>
+  </ng-template>
+
+</section>

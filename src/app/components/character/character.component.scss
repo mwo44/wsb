@@ -1,0 +1,14 @@
+@import '../../../vars';
+
+section,
+p {
+  font: $font;
+}
+
+img {
+  width: 100%;  
+}
+
+section {
+  user-select: none;
+}

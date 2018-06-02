@@ -1,0 +1,11 @@
+input[type="submit"] {
+  display: block;
+}
+label[for="image"]::before {
+  content: " ";
+  display: block;
+}
+img {
+  width: 200px;
+  display: block;
+}

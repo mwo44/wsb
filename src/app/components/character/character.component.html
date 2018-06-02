@@ -1,0 +1,12 @@
+<section>
+  <p>{{character.name}}    
+    <a [routerLink]="['/edit', character._id]">edit</a>
+    <button (click)="delete(character._id)">delete</button>
+  </p>
+  <div  *ngIf="!folded">
+    <img *ngIf="character.image" [src]="character.image"/>
+    <ol>
+      <li *ngFor="let film of character.films">{{film}}</li>
+    </ol>    
+  </div>
+</section>

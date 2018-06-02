@@ -1,0 +1,13 @@
+<h2>Characters:</h2>
+<ol *ngIf="people; else loader">
+ <li *ngFor="let character of people | async;  let i = index;">
+   <character [character]="character"
+              [folded]="selectedCharacter !== i"
+              routerLink="/{{i}}">
+   </character>
+ </li>
+</ol>
+
+<ng-template #loader>
+  <div className="loader">loading...</div>
+</ng-template>

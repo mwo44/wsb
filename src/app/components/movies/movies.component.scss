@@ -1,0 +1,10 @@
+@import '../../../vars';
+
+ol,
+li {
+  font: $font;
+}
+
+ol li img {
+  width: 100%;
+}

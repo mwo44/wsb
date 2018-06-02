@@ -1,0 +1,34 @@
+<section>
+  <form #addForm="ngForm" (ngSubmit)="add(addForm.value)" novalidate>
+    <legend>Add character</legend>
+    <input type="hidden" [(ngModel)]="person._id" name="_id" />
+    <label for="name">Character name:</label>
+    <input  type="text"
+            [(ngModel)]="person.name"
+            name="name"
+            id="name"
+            placeholder="Type character name"
+            required />
+    <label for="image">Character image:</label>
+    <input  type="text"
+            [(ngModel)]="person.image"
+            name="image"
+            id="image"
+            placeholder="Type URL to image"
+            required />
+    <img *ngIf="person.image" [src]="person.image" />
+    <fieldset *ngFor="let movie of movies; let i = index;">
+      <input  *ngIf="movie.title"              
+              [checked]="movie.checked"
+              [id]="movie._id"
+              name="films"
+              type="checkbox"              
+              [value]="movie.title"
+              (change)="updateFilms($event)"
+              />
+      <label [for]="movie._id">{{movie.title}} ({{movie.release_year}})</label>
+    </fieldset>
+    <input  type="submit"
+            value="add character"/>
+  </form>
+</section>
