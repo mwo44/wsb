@@ -23,6 +23,8 @@ export class CharacterComponent {
 
   selectedCharacter: number = null;
 
+  position: string = 'above';
+
   constructor(ms: MainService) {
       this.mainService = ms;
   }

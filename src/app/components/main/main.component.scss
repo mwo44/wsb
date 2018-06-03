@@ -1,0 +1,29 @@
+.characters {
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  grid-gap: 5%;
+  padding-top: 3vh;
+}
+
+@media screen and (max-width : 480px) {
+  .characters {
+    grid-template-columns: 100%;
+  }
+}
+@media only screen and (min-width : 480px) and (max-width : 768px) {
+  .characters {
+    grid-template-columns: 47.5% 47.5%;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .characters {
+    grid-template-columns: 31.66% 31.66% 31.66%;
+  }
+}
+@media only screen and (min-width : 1024px) {
+  .characters {
+    grid-template-columns: 23.75% 23.75% 23.75% 23.75%;
+  }
+}

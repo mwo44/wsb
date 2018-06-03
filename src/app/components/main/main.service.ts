@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Character } from '../character/character.interface';
-
+import { MatSnackBar } from '@angular/material';
 // Firebase storage service for CRUD 
 @Injectable()
 export class MainService {
@@ -15,9 +15,10 @@ export class MainService {
   moviesSnapshot: any = [];
   
   character: Character;
-  db: AngularFirestore;
+  db: AngularFirestore;  
 
-  constructor(db: AngularFirestore){
+  constructor(db: AngularFirestore,
+              public sb: MatSnackBar){
     this.db = db;
     this.peopleCollection = db.collection(this.peopleFolder);
     this.people = this.peopleCollection.valueChanges();
@@ -46,9 +47,13 @@ export class MainService {
 
   delete(id: string): void {
     this.peopleCollection.doc(id).delete().then(() => {
-        console.log("Document successfully deleted!");
+        this.sb.open("Character successfully deleted!", "", {
+          duration: 2000
+        });
     }).catch((error) => {
-        console.error("Error removing document: ", error);
+        this.sb.open("Error removing document: ", error, {
+          duration: 2000
+        });
     });
   }
 }

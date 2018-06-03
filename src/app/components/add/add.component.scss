@@ -1,10 +1,39 @@
 input[type="submit"] {
   display: block;
 }
+
 label[for="image"]::before {
   content: " ";
   display: block;
 }
+
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+  user-select: none;
+  .material-icons {
+    position: relative;
+    top: 6px;
+  }
+  .input-empty {
+    display: inline-block;    
+  }
+  .input-full {
+    display: none;
+  }
+}
+
+.input-checked + label {
+  .input-empty {
+    display: none;
+  }
+  .input-full {
+    display: initial;
+  }
+}
+
 img {
   width: 200px;
   display: block;

@@ -1,9 +1,22 @@
 /* Add application styles & imports to this file! */
+@import '~@angular/material/theming';
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import 'vars';
+
+@include mat-core();
+
 body {
   font: $font;
 }
 fieldset {
   border: 0;
+}
+button {
+  text-transform: uppercase;
+
+  .material-icons {
+    margin-top: -5px;
+  }
 }

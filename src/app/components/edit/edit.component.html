@@ -1,12 +1,34 @@
 <section>
-  <a routerLink="/">back</a>  
+  <button mat-button
+          color="primary"
+          routerLink="/">
+    <i class="material-icons">wrap_text</i>
+    back
+  </button>  
 
   <form *ngIf="tempPerson; else loader" #editForm="ngForm" (ngSubmit)="edit(editForm.value)" novalidate>
     <legend>Edit {{tempPerson.name}}</legend>
     <input type="hidden" [(ngModel)]="tempPerson._id" name="_id" />
-    <input type="text" [(ngModel)]="tempPerson.name" name="name" required />
-    <input type="text" [(ngModel)]="tempPerson.image" name="image" required />
+    <mat-form-field>
+      <input  matInput
+              placeholder="Character name"
+              name="name"
+              id="name"
+              [(ngModel)]="tempPerson.name"
+              required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input  matInput
+              placeholder="Character image"
+              name="image"
+              id="image"
+              [(ngModel)]="tempPerson.image"
+              required>
+    </mat-form-field>
+    
     <img [src]="tempPerson.image" />
+    
     <fieldset *ngFor="let movie of movies; let i = index;">
       <input  *ngIf="movie.title"              
               [checked]="movie.checked"
@@ -18,8 +40,13 @@
               />
       <label [for]="movie._id">{{movie.title}} ({{movie.release_year}})</label>
     </fieldset>
-    <input  type="submit"
-            value="submit changes"/>
+    
+    <button mat-raised-button
+            color="primary"
+            type="submit">
+        <i class="material-icons">how_to_reg</i>
+        save changes
+    </button>    
   </form>
 
   <ng-template #loader>

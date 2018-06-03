@@ -6,9 +6,37 @@ p {
 }
 
 img {
-  width: 100%;  
+  margin-top: 0;  
 }
 
 section {
   user-select: none;
+}
+
+ol {
+  padding-left: 2em;
+}
+
+character {
+  user-select: none;
+  margin-bottom: 2em;
+  height: 90%;
+  &:focus {
+    outline: none;
+  }  
+}
+
+.mat-card {
+  overflow: hidden;
+  position: relative;
+  padding-top: 0;
+  margin-bottom: 3vh;
+}
+
+.mat-card-header {
+  position: absolute;
+  color: #fff;
+  top: 2em;
+  text-shadow: -.2em .2em .2em rgba(0, 0, 0, .8),
+               .2em -.2em .2em rgba(0, 0, 0, .8);
 }

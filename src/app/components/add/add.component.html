@@ -2,33 +2,49 @@
   <form #addForm="ngForm" (ngSubmit)="add(addForm.value)" novalidate>
     <legend>Add character</legend>
     <input type="hidden" [(ngModel)]="person._id" name="_id" />
-    <label for="name">Character name:</label>
-    <input  type="text"
-            [(ngModel)]="person.name"
-            name="name"
-            id="name"
-            placeholder="Type character name"
-            required />
-    <label for="image">Character image:</label>
-    <input  type="text"
-            [(ngModel)]="person.image"
-            name="image"
-            id="image"
-            placeholder="Type URL to image"
-            required />
+    
+    <mat-form-field>
+      <input  matInput
+              placeholder="Character name"
+              name="name"
+              id="name"
+              [(ngModel)]="person.name"
+              required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input  matInput
+              placeholder="Character image"
+              name="image"
+              id="image"
+              [(ngModel)]="person.image"
+              required>
+    </mat-form-field>
+    
     <img *ngIf="person.image" [src]="person.image" />
-    <fieldset *ngFor="let movie of movies; let i = index;">
-      <input  *ngIf="movie.title"              
-              [checked]="movie.checked"
-              [id]="movie._id"
-              name="films"
-              type="checkbox"              
-              [value]="movie.title"
-              (change)="updateFilms($event)"
-              />
-      <label [for]="movie._id">{{movie.title}} ({{movie.release_year}})</label>
+
+    <fieldset *ngFor="let movie of movies; let i = index;">      
+        <input  *ngIf="movie.title"              
+                [checked]="movie.checked"
+                [id]="movie._id"
+                name="films"
+                type="checkbox"              
+                [value]="movie.title"
+                (change)="updateFilms($event)"
+                />
+        <label [for]="movie._id">
+          <i class="material-icons input-empty">check_box_outline_blank</i>
+          <i class="material-icons input-full">check_box</i>
+          {{movie.title}} ({{movie.release_year}})
+        </label>
     </fieldset>
-    <input  type="submit"
-            value="add character"/>
+
+    <button mat-raised-button
+            color="primary"
+            type="submit">
+        <i class="material-icons">person_add</i>
+        add character
+    </button>
+
   </form>
 </section>

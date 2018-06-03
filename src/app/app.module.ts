@@ -23,7 +23,12 @@ import { CharactersComponent } from './components/characters/characters.componen
 // Material imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule,
-         MatCheckboxModule } from '@angular/material';
+         MatCheckboxModule,
+         MatCardModule,         
+         MatInputModule,
+         MatSnackBarModule,
+         MatTooltipModule
+         } from '@angular/material';
 
 const config = Environment;
 
@@ -36,7 +41,13 @@ const routes = RoutePaths;
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatTooltipModule,
   ],
   declarations: [
     AddComponent,

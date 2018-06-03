@@ -1,12 +1,25 @@
-<section>
-  <p>{{character.name}}    
-    <a [routerLink]="['/edit', character._id]">edit</a>
-    <button (click)="delete(character._id)">delete</button>
-  </p>
-  <div  *ngIf="!folded">
-    <img *ngIf="character.image" [src]="character.image"/>
+<mat-card class="card">
+  <mat-card-header>{{character.name}}</mat-card-header>
+  <img mat-card-image *ngIf="character.image" [src]="character.image"/>
+  <mat-card-content>
     <ol>
       <li *ngFor="let film of character.films">{{film}}</li>
-    </ol>    
-  </div>
-</section>
+    </ol>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button
+            color="primary"
+            [routerLink]="['/edit', character._id]">
+        <i class="material-icons">edit</i>
+        edit
+    </button>
+    <button mat-button
+            color="accent" 
+            matTooltip="With great power comes great responsibility!"
+            [matTooltipPosition]="position"
+            (click)="delete(character._id)">
+        <i class="material-icons">delete</i>
+        delete
+    </button>
+  </mat-card-actions>
+</mat-card>

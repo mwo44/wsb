@@ -54,10 +54,14 @@ export class AddComponent implements OnInit, OnDestroy {
   }
   
   updateFilms(event) {
-    // For material checkboxes event.target may be event.source.
-    (event.target.checked) ?
-      this.person.films.push(event.target.value) :
+    var className = 'input-checked';
+    if (event.target.checked) {
+      this.person.films.push(event.target.value);
+      event.target.classList.add(className);
+    } else {
       this.person.films.splice(this.person.films.indexOf(event.target.value), 1);
+      event.target.classList.remove(className);
+    }
   }
   add(form) {
     var character: Character = this.person;

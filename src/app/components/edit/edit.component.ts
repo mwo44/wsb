@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router, Routes, RouterModule } from '@angular/router';;
 import { MainService } from '../main/main.service';
 import { Character } from '../character/character.interface';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   templateUrl: './edit.component.html',
@@ -24,7 +25,8 @@ export class EditComponent implements OnInit, OnDestroy
 
   constructor(private ms: MainService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    public sb: MatSnackBar) {
     this.mainService = ms;
     this.route.params.subscribe(
       params => (this.id = params['id'])
@@ -71,14 +73,14 @@ export class EditComponent implements OnInit, OnDestroy
       this.tempPerson.name = form.name;
       this.tempPerson.image = form.image;
       this.mainService.update(this.tempPerson).then((success) => {
-        console.log("Document successfully updated!");
+        this.sb.open("Character successfully updated!", "", { duration: 2000 });
         this.router.navigate(['./']);
       })
         .catch(function (error) {
-          console.error("Error updating document: ", error);
+          this.sb.open("Error updating document: ", error, { duration: 2000 });          
         });
-    } else {
-      console.log("Character needs to appear in at least one movie, have a name and an image.");
+    } else {      
+      this.sb.open("Character needs to appear in at least one movie, have a name and an image.", "", { duration: 2000 });
       return false;
     }
   }
