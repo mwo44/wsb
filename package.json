@@ -1,7 +1,7 @@
 {
   "name": "angular-template",
   "description": "",
-  "homepage": "https://stackblitz.com/edit/wsb-crm",
+  "homepage": "https://wsb-crm.stackblitz.io",
   "dependencies": {
     "@angular/animations": "5.2.4",
     "@angular/common": "5.2.8",
